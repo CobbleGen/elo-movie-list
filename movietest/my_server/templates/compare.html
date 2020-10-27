@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block headline %}
+    {% block title %}Comparing {{movie1['Title']}} and {{movie2['Title']}}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    
+    <div class="container text-centered align-items-center bg-light" style="padding: 10px;">
+        <div class="row text-centered" style="margin-bottom: 100px; margin-left: 100px; margin-right: 100px; margin-top: 40px;">
+            <div class="col-sm-5 text-centered">
+                <a href="{{url_for('compare', wid = movie1['imdbID'], lid = movie2['imdbID'])}}">
+                <img src="{{movie1['Poster']}}">
+                </a>
+            </div>
+            <div class="col-sm-2 text-centered">
+                <h3>VS</h3>
+            </div>
+            <div class="col-sm-5 text-centered">
+                <a href="{{url_for('compare', wid = movie2['imdbID'], lid =movie1['imdbID'])}}">
+                <img src="{{movie2['Poster']}}">
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

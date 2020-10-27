@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block headline %}
+    {% block title %}Error {{ error_num }}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ error_num }} {{error_text}}</h2>
+{% endblock %}

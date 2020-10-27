@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block headline %}
+    {% block title %}Startsida{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div class="container bg-light">
+        <h2>Welcome</h2>
+        {% for movie in moviedets %}
+            <p><b>{{movie.Title}}</b> - {{movie.elo}}</p>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

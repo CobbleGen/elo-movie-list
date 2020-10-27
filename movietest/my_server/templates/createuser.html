@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block headline %}
+    {% block title %}New User{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="text-centered bg-light" style="width: 100%; height: 100%; padding: 10px;">
+    <h2>Register</h2>
+
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert alert-{{category}}">
+        <strong>{{ message }}</strong>
+      </div>
+    {%endfor %}
+
+    <form action="{{url_for('create_user')}}" method="POST">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" placeholder="Enter username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" name="pwd">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Repeat Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" name="pwd2">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

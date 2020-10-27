@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block headline %}
+    {% block title %}Startsida{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+    <h2>Results for "{{search_term}}"</h2>
+
+    <div class="bg-light container" style="display: inline-block; padding: 20px;">
+    {% for movie in movies['Search'] %}
+        <div class="text-center" style="padding: 10px; margin: 20px;">
+            <a href="{{url_for('movie', dbid = movie['imdbID'])}}">
+                <h3><b>{{movie['Title']}}</b></h3>
+                <img src="{{movie['Poster']}}">
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

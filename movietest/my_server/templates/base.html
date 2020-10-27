@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron bg-light text-center" style="margin-bottom: 0">
+                <h1 class="text-info"><b>{% block headline %}{% endblock %}</b></h1>
+            </div>
+            <nav class="nav navbar-expand-sm navbar-dark bg-info justify-content-center" style="padding: 12px">
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('start')}}">Start</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('compare')}}">Compare movies</a>
+                      </li>
+                      {% if loggedIn %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('login')}}">My profile</a>
+                      </li>
+                      {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('login')}}">Log in</a>
+                      </li>
+                      {% endif %}
+                  </ul>
+                    <form class="form-inline my-2 my-lg-0" _lpchecked="1" action="{{url_for('searched')}}" method="POST">
+                      <input class="form-control mr-sm-2" type="text" name="search_text" placeholder="Search for movie">
+                      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+            <br />
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
